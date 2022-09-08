@@ -6,10 +6,12 @@ from models import Tarea
 
 app = Flask(__name__)
 
+
 @app.route('/')
-def home ():
+def home():
     tareas_db = db.session.query(Tarea).all()
     return render_template('index.html', lista_tareas=tareas_db)
+
 
 @app.route('/crear-tarea', methods=['POST'])
 def crear():
@@ -18,19 +20,22 @@ def crear():
     db.session.commit()
     return redirect(url_for('home'))
 
+
 @app.route('/eliminar-tarea/<id>')
-def eliminar (id):
+def eliminar(id):
     tarea = db.session.query(Tarea).filter_by(id=int(id)).delete()
     db.session.commit()
     return redirect(url_for('home'))
 
+
 @app.route('/tarea-hecha/<id>')
-def hecha (id):
+def hecha(id):
     tarea = db.session.query(Tarea).filter_by(id=int(id)).first()
-    tarea.hecha = not(tarea.hecha)
+    tarea.hecha = not (tarea.hecha)
     db.session.commit()
     return redirect(url_for('home'))
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     db.Base.metadata.create_all(db.engine)
     app.run(debug=True)
