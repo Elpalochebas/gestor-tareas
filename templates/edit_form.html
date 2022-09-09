@@ -1,0 +1,10 @@
+<form  action="/update-tarea/{{tarea.id}}" method="post">
+    <div class="form-group">
+        <input type="text" name="contenido_tarea" value="{{tarea.contenido}}" placeholder="Tarea" class="form-control my-2" required>
+        <input type="text" name="categoria_tarea" value="{{tarea.categoria}}" placeholder="Categoria" class="form-control my-2" required>
+        <input type="datetime-local" name="fecha_tarea" value="{{tarea.fecha_entrega_str}}" class="form-control" required>
+        <button type="submit" class="mt-2 btn btn-primary btn-block">
+            Guardar
+        </button>
+    </div>   
+</form>
