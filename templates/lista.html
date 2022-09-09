@@ -1,0 +1,20 @@
+
+{% for grupo_tareas in lista_categorias %}
+    <h3 class="list-group-item">{{grupo_tareas[0]}}</h3>
+    <table class="table table_hover">
+        <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Contenido</th>
+              <th scope="'col">Fecha creacion</th>
+              <th scope="col">¿Hecha?</th>
+              <th scope="col">Opciones</th>
+            </tr>
+          </thead>
+        <tbody>
+            {% include 'tarea.html' %}
+        </tbody>
+    </table>
+{% endfor %}
+
+    
